@@ -4,11 +4,106 @@
  * Menus
  */
 
-
-.nav {}
+.navbar {
+    background-color: $body-bg;
+    border: none;
+    margin-bottom: 0;
+    border-radius: 0;
+    @media only screen and (min-width : 768px) {
+      margin-bottom: 20px;
+    }
+    // -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    // -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    // box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    & > .container &-brand {
+        margin-left: 0;
+        .nav-profile-img {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin-top: -25px;
+            margin-right: 10px;
+        }
+        .nav-profile-text {
+            display: inline-block;
+        }
+        small {
+            font-size: 65%;
+            margin-left: 1px;
+        }
+        &:hover {
+            color: $hover-color;
+        }
+    }
+    & &-nav > li.current_page_parent > a,
+    & &-nav > li.current_page_item > a {
+      color: $primary-color;
+    }
+    & &-nav > li > a {
+        font-size: 12px;
+        @media only screen and (min-width : 768px) {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        &:hover {
+            color: $hover-color;
+        }
+    }
+    &-default &-toggle {
+        @media only screen and (max-width : 768px) {
+          margin: 0 15px 0 0;
+          padding: 15px 0;
+          i {
+            font-size: 20px;
+          }
+        }
+        border: none;
+        &:hover,
+        &:focus {
+            background: none;
+        }
+    }
+}
 
 .menu {}
 
-.sub-menu {}
+.menu-item-has-children:hover .sub-menu {
+    display: block;
+}
+
+.sub-menu {
+  line-height: 25px;
+  list-style: none;
+  font-size: 12px;
+
+  @media only screen and (max-width : 768px) {
+    li {
+      padding: 5px 10px;
+    }
+  }
+
+  @media only screen and (min-width : 768px) {
+    background-color: $primary-color;
+    display: none;
+    position: absolute;
+    padding: 10px;
+    margin-top: -5px;
+    margin-left: -20px;
+    width: 100px;
+    text-align: center;
+    a {
+      color: white !important;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+li#menu-item-663.current-page-ancestor > a,
+.current-page-ancestor > a,
+.current-menu-item > a {
+  color: $primary-color;
+}
 
 .menu-item {}

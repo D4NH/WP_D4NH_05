@@ -1,24 +1,30 @@
 <?php get_header(); ?>
 
-	<main role="main" aria-label="Content">
-		<!-- section -->
-		<section>
+  <div class="container main" role="main" aria-label="Content">
+    <!-- section -->
+    <section class="col-sm-9">
 
-			<!-- article -->
-			<article id="post-404">
+      <div class="row">
 
-				<h1><?php _e( 'Page not found', 'html5blank' ); ?></h1>
-				<h2>
-					<a href="<?php echo home_url(); ?>"><?php _e( 'Return home?', 'html5blank' ); ?></a>
-				</h2>
+        <!-- article -->
+        <article id="post-404">
 
-			</article>
-			<!-- /article -->
+          <h2><?php _e( 'Pagina niet gevonden', 'html5blank' ); ?></h2>
+          <span class="line"></span>
+          <h3>
+            <a href="<?php echo home_url(); ?>"><?php _e( 'Terug naar home', 'html5blank' ); ?></a>
+          </h3>
 
-		</section>
-		<!-- /section -->
-	</main>
+        </article>
+        <!-- /article -->
 
-<?php get_sidebar(); ?>
+      </div>
+
+    </section>
+    <!-- /section -->
+
+    <?php get_sidebar(); ?>
+
+  </div>
 
 <?php get_footer(); ?>

@@ -1,30 +1,32 @@
-			<!-- footer -->
-			<footer class="footer" role="contentinfo">
+      <!-- footer -->
+      <footer class="footer container" role="contentinfo">
 
-				<!-- copyright -->
-				<p class="copyright">
-					&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>. <?php _e('Powered by', 'html5blank'); ?>
-					<a href="//wordpress.org">WordPress</a> &amp; <a href="//html5blank.com">HTML5 Blank</a>.
-				</p>
-				<!-- /copyright -->
+        <!-- copyright -->
+        <small class="copyright pull-left">
+          &copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>
+        </small>
+        <!-- /copyright -->
 
-			</footer>
-			<!-- /footer -->
+        <a class="pull-right" href="//www.linkedin.com/in/nguyendtd" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+        <a class="pull-right" href="//www.facebook.com/nguyendtd" target="_blank"><i class="fa fa-facebook-square"></i></a>
 
-		</div>
-		<!-- /wrapper -->
+      </footer>
+      <!-- /footer -->
 
-		<?php wp_footer(); ?>
+    </div>
+    <!-- /wrapper -->
 
-		<!-- analytics -->
-		<script>
-		(function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){
-		(f[s].q=f[s].q||[]).push(arguments)},f[s].l=1*new Date();h=i.createElement(r),
-		l=i.getElementsByTagName(r)[0];h.async=1;h.src=e;l.parentNode.insertBefore(h,l)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		ga('create', 'UA-XXXXXXXX-XX', 'yourdomain.com');
-		ga('send', 'pageview');
-		</script>
+    <?php wp_footer(); ?>
 
-	</body>
+    <!-- analytics -->
+    <script>
+    (function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){
+    (f[s].q=f[s].q||[]).push(arguments)},f[s].l=1*new Date();h=i.createElement(r),
+    l=i.getElementsByTagName(r)[0];h.async=1;h.src=e;l.parentNode.insertBefore(h,l)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-50175354-1', 'danhnguyen.nl');
+    ga('send', 'pageview');
+    </script>
+
+  </body>
 </html>

@@ -1,8 +1,10 @@
 <?php get_header(); ?>
 
-	<main role="main" aria-label="Content">
-		<!-- section -->
-		<section>
+<div class="container main" role="main" aria-label="Content">
+  <!-- section -->
+  <section class="col-sm-9">
+
+    <div class="row">
 
 		<?php if (have_posts()): the_post(); ?>
 
@@ -72,10 +74,13 @@
 
 			<?php get_template_part('pagination'); ?>
 
-		</section>
-		<!-- /section -->
-	</main>
+      </div>
 
-<?php get_sidebar(); ?>
+    </section>
+    <!-- /section -->
+
+    <?php get_sidebar(); ?>
+
+  </div>
 
 <?php get_footer(); ?>

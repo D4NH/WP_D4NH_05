@@ -1,71 +1,119 @@
 <?php get_header(); ?>
 
-	<main role="main" aria-label="Content">
-	<!-- section -->
-	<section>
+  <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+  <div class="container main" role="main" aria-label="Content">
 
-		<!-- article -->
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <?php
+      $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "full");
+      $img = $img[0];
+    ?>
 
-			<!-- post thumbnail -->
-			<?php if ( has_post_thumbnail()) : // Check if Thumbnail exists ?>
-				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-					<?php the_post_thumbnail(); // Fullsize image for the single post ?>
-				</a>
-			<?php endif; ?>
-			<!-- /post thumbnail -->
+    <div class="fullscreen background" style="background-image:url('<?php echo $img ?>');">
+      <div class="content-a">
+          <div class="content-b">
+              <h1><?php the_title(); ?></h1>
+              <h2><?php the_date(); ?> <?php the_time(); ?> door <?php the_author(); ?></h2>
+          </div>
+      </div>
+    </div>
 
-			<!-- post title -->
-			<h1>
-				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-			</h1>
-			<!-- /post title -->
+    <div class="row">
 
-			<!-- post details -->
-			<span class="date">
-				<time datetime="<?php the_time('Y-m-d'); ?> <?php the_time('H:i'); ?>">
-					<?php the_date(); ?> <?php the_time(); ?>
-				</time>
-			</span>
-			<span class="author"><?php _e( 'Published by', 'html5blank' ); ?> <?php the_author_posts_link(); ?></span>
-			<span class="comments"><?php if (comments_open( get_the_ID() ) ) comments_popup_link( __( 'Leave your thoughts', 'html5blank' ), __( '1 Comment', 'html5blank' ), __( '% Comments', 'html5blank' )); ?></span>
-			<!-- /post details -->
+      <section class="col-sm-12">
 
-			<?php the_content(); // Dynamic Content ?>
+        <!-- article -->
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-			<?php the_tags( __( 'Tags: ', 'html5blank' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
+          <div class="post__container">
 
-			<p><?php _e( 'Categorised in: ', 'html5blank' ); the_category(', '); // Separated by commas ?></p>
+            <div class="post__header clearfix">
 
-			<p><?php _e( 'This post was written by ', 'html5blank' ); the_author(); ?></p>
+              <!-- post details -->
+              <!-- <small class="author pull-left"><i class="fa fa-user"></i><?php _e( ' ', 'html5blank' ); ?> <?php the_author(); ?></small>
+              <small class="date pull-right">
+                <i class="fa fa-clock-o"></i>
+                <time datetime="<?php the_time('d-m-Y'); ?> <?php the_time('H:i'); ?>">
+                  <?php the_date(); ?> <?php the_time(); ?>
+                </time>
+              </small> -->
+              <!-- /post details -->
 
-			<?php edit_post_link(); // Always handy to have Edit Post Links available ?>
+            </div>
 
-			<?php comments_template(); ?>
+            <div class="post__content">
 
-		</article>
-		<!-- /article -->
+              <?php the_content(); // Dynamic Content ?>
 
-	<?php endwhile; ?>
+              <?php // the_tags( __( 'Tags: ', 'html5blank' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
 
-	<?php else: ?>
+              <!-- <p><?php // _e( 'Categorised in: ', 'html5blank' ); the_category(', '); // Separated by commas ?></p> -->
 
-		<!-- article -->
-		<article>
+              <p>Categorised in: <a href="/blog/<?php echo sanitize_title(get_the_category( $id )[0]->name); ?>"><?php echo get_the_category( $id )[0]->name; ?></a></p>
 
-			<h1><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h1>
+              <p><?php // _e( 'Geschreven door ', 'html5blank' ); the_author(); ?></p>
 
-		</article>
-		<!-- /article -->
+              <?php edit_post_link(); // Always handy to have Edit Post Links available ?>
 
-	<?php endif; ?>
+            </div>
 
-	</section>
-	<!-- /section -->
-	</main>
+          </div>
 
-<?php get_sidebar(); ?>
+          <div class="navigationarrow">
+            <?php if ( is_category('gadgets') || is_category('japan2014') ){ ?>
+            <div class="pull-left"><?php previous_post_link('&laquo; %link','%title',FALSE,'') ?></div>
+            <div class="pull-right next-post"><?php next_post_link('%link &raquo;','%title',FALSE,'') ?></div>
+            <?php } else { ?>
+            <div class="pull-left"><?php previous_post_link('&laquo; %link','%title','TRUE','') ?></div>
+            <div class="pull-right next-post"><?php next_post_link('%link &raquo;','%title','TRUE','') ?></div>
+            <?php } ?>
+          </div>
+
+          <br/><br/><br/>
+
+          <div class="post__comments">
+
+            <?php comments_template(); ?>
+
+          </div>
+
+        </article>
+        <!-- /article -->
+
+      </section>
+
+      <?php // get_sidebar(); ?>
+
+    </div>
+
+  </div>
+
+  <?php endwhile; ?>
+
+  <?php else: ?>
+
+    <div class="container main" role="main" aria-label="Content">
+
+      <div class="row">
+
+        <section class="col-sm-8">
+
+            <!-- article -->
+            <article>
+
+              <h1><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h1>
+
+            </article>
+            <!-- /article -->
+
+        </section>
+
+        <?php get_sidebar(); ?>
+
+      </div>
+
+    </div>
+
+  <?php endif; ?>
 
 <?php get_footer(); ?>

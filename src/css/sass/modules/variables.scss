@@ -8,7 +8,7 @@
  * Typography
  */
 
-$font-family-base: "Helvetica Neue", Helvetica, Arial, "Open Sans", sans-serif;
+$font-family-base: 'Open Sans', sans-serif;
 $font-size-base: 140%;
 $line-height-base: 1.5;
 
@@ -18,16 +18,16 @@ $line-height-base: 1.5;
  */
 
 $text-color: #444;
-$body-bg: #fff;
-$selection-bg: #04A4CC;
-
+$body-bg: #FAFAFA;
+$primary-color: #88C441;
+$selection-bg: $primary-color;
+$hover-color: $primary-color;
 
 /**
  * Grid
  */
 
 $wrapper-width: 1280px;
-
 
 $padding-horizontal-base: 5px;
 $padding-vertical-base: 5px;

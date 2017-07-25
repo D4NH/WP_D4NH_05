@@ -1,7 +1,7 @@
 <?php
 /**
- * Author: Todd Motto | @toddmotto
- * URL: html5blank.com | @html5blank
+ * Author: Danh Nguyen
+ * URL: https://www.danhnguyen.nl
  * Custom functions, support, custom post types and more.
  */
 
@@ -30,7 +30,7 @@ if (function_exists('add_theme_support'))
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
-    add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('custom-size', 1024, 576, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     /*add_theme_support('custom-background', array(
@@ -83,8 +83,8 @@ function html5blank_nav()
         'after'           => '',
         'link_before'     => '',
         'link_after'      => '',
-        'items_wrap'      => '<ul>%3$s</ul>',
-        'depth'           => 0,
+        'items_wrap'      => '<ul class="nav navbar-nav">%3$s</ul>',
+        'depth'           => 2,
         'walker'          => ''
         )
     );
@@ -99,6 +99,12 @@ function html5blank_header_scripts()
             wp_deregister_script('jquery');
             wp_register_script('jquery', get_template_directory_uri() . '/bower_components/jquery/dist/jquery.js', array(), '1.11.1');
 
+            // Bootstrap
+            wp_register_script('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array(), '3.3.7');
+
+            // FontAwesome
+            wp_register_script('fontawesome', 'https://use.fontawesome.com/b19c4a013c.js', array(), '4.7.0');
+
             // Conditionizr
             wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0');
 
@@ -112,7 +118,9 @@ function html5blank_header_scripts()
                 array(
                     'conditionizr',
                     'modernizr',
-                    'jquery'),
+                    'jquery',
+                    'bootstrap',
+                    'fontawesome'),
                 '1.0.0');
 
             // Enqueue Scripts
@@ -120,8 +128,17 @@ function html5blank_header_scripts()
 
         // If production
         } else {
+            wp_deregister_script('jquery');
+            wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', array(), null, false);
+            wp_enqueue_script('jquery'); // Enqueue it!
             // Scripts minify
             wp_register_script('html5blankscripts-min', get_template_directory_uri() . '/js/scripts.min.js', array(), '1.0.0');
+            // Bootstrap
+            wp_register_script('bootstrapjs', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array(), '3.3.7');
+            wp_enqueue_script('bootstrapjs'); // Enqueue it!
+            // FontAwesome
+            wp_register_script('fontawesome', 'https://use.fontawesome.com/b19c4a013c.js', array(), '4.7.0');
+            wp_enqueue_script('fontawesome'); // Enqueue it!
             // Enqueue Scripts
             wp_enqueue_script('html5blankscripts-min');
         }
@@ -145,8 +162,11 @@ function html5blank_styles()
         // normalize-css
         wp_register_style('normalize', get_template_directory_uri() . '/bower_components/normalize.css/normalize.css', array(), '3.0.1');
 
+        // Bootstrap CSS
+        wp_register_style('bootstrapcss', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), '3.3.7');
+
         // Custom CSS
-        wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array('normalize'), '1.0');
+        wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0');
 
         // Register CSS
         wp_enqueue_style('html5blank');
@@ -163,8 +183,7 @@ function register_html5_menu()
 {
     register_nav_menus(array( // Using array to specify more menus if needed
         'header-menu' => __('Header Menu', 'html5blank'), // Main Navigation
-        'sidebar-menu' => __('Sidebar Menu', 'html5blank'), // Sidebar Navigation
-        'extra-menu' => __('Extra Menu', 'html5blank') // Extra Navigation if needed (duplicate as many as you need!)
+        'sidebar-menu' => __('Sidebar Menu', 'html5blank') // Sidebar Navigation
     ));
 }
 
@@ -267,10 +286,20 @@ function html5wp_index($length) // Create 20 Word Callback for Index page Excerp
     return 20;
 }
 
-// Create 40 Word Callback for Custom Post Excerpts, call using html5wp_excerpt('html5wp_custom_post');
+// Create 10 Word Callback for Custom Post Excerpts, call using html5wp_excerpt('html5wp_custom_post');
 function html5wp_custom_post($length)
 {
-    return 40;
+    return 14;
+}
+
+function html5wp_home($length)
+{
+    return 10;
+}
+
+function html5wp_search($length)
+{
+    return 7;
 }
 
 // Create the Custom Excerpts callback
@@ -286,7 +315,7 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
     $output = get_the_excerpt();
     $output = apply_filters('wptexturize', $output);
     $output = apply_filters('convert_chars', $output);
-    $output = '<p>' . $output . '</p>';
+    $output = '<small>' . $output . '</small><br/><br/>';
     echo $output;
 }
 
@@ -294,7 +323,7 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
 function html5_blank_view_article($more)
 {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'html5blank') . '</a>';
+    return '... <br/><a class="read-more" href="' . get_permalink($post->ID) . '">' . __('Lees meer', 'html5blank') . '<i class="fa fa-chevron-right" aria-hidden="true"></i></a>';
 }
 
 // Remove Admin bar

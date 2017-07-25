@@ -1,3 +1,26 @@
+# [WPacked](https://github.com/enricodeleo/wpacked)
+
+WPacked tries to give you an easy development starter kit easy to maintain and deploy, within a clean pure local environment. Just like you usually do with npm.
+* No more XAMP/MAMP or virtual machines, or other (often conflicting) softwares on your local machines. You just need PHP.
+* Clean, versionable, quick.
+
+## Usage
+
+Instant development. Just a few commands.
+
+Install all the dependencies of the project:
+
+```
+composer install;
+yarn install
+```
+
+Launch the development server with:
+
+```
+yarn start
+```
+
 # [HTML5 Blank](http://html5blank.com)
 
 Powerful shell for rapidly deploying your WordPress projects.

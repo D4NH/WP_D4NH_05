@@ -41,7 +41,8 @@ a {
 
   &:focus,
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: $hover-color;
   }
 
   &:active {}
@@ -58,4 +59,21 @@ input[type="search"] {
   background-color: $selection-bg;
   color: $body-bg;
   text-shadow: none;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 15px;
+}
+
+input, select, textarea {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid $primary-color;
+  min-height: 30px;
+  padding-left: 8px;
+  &:focus {
+    outline: 1px solid lighten($primary-color, 20%);
+    box-shadow: 0 0 2px 0 $primary-color;
+  }
 }

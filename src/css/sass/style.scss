@@ -4,6 +4,9 @@
  * Main `sass` file. Import here `sass` files
  */
 
+// Lib
+@import "lib/_bootstrap";
+
 // Modules
 @import "modules/variables";
 @import "modules/mixins";
@@ -17,5 +20,8 @@
 @import "partials/header";
 @import "partials/nav";
 @import "partials/sidebar";
+@import "partials/spacing";
 @import "partials/footer";
 @import "partials/print";
+@import "partials/buttons";
+@import "partials/other";

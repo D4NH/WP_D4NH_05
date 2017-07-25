@@ -1,47 +1,105 @@
-<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+<h2>Laatste trips</h2>
+<span class="line"></span>
+<div class="row">
+  <?php
+    // The Query
+    $the_query = new WP_Query( array( 'post_type' => 'page', 'post_parent' => 1392, 'posts_per_page' => 3 ) );
 
-	<!-- article -->
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    // The Loop
+    if ( $the_query->have_posts() ) {
+      while ( $the_query->have_posts() ) {
+        $the_query->the_post();
+        $category = get_the_category(); ?>
 
-		<!-- post thumbnail -->
-		<?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-				<?php the_post_thumbnail(array(120,120)); // Declare pixel size you need inside the array ?>
-			</a>
-		<?php endif; ?>
-		<!-- /post thumbnail -->
+        <article class="col-sm-12">
 
-		<!-- post title -->
-		<h2>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-		</h2>
-		<!-- /post title -->
+        <div class="panel row">
+          <div class="panel__img col-sm-6">
+            <div class="category category--blog">
+                <a href="/blog/travel/">
+                  Travel
+                </a>
+            </div>
+            <a href="<?php echo get_permalink(); ?>">
+              <?php if ( has_post_thumbnail() ) {
+                 the_post_thumbnail( 'custom-size', array( 'class' => 'afbeelding img-responsive' ) );
+               } ?>
+            </a>
+          </div>
+          <div class="panel__content panel__content--no-padding col-sm-6">
+            <h2 class="subtitle ellipsis"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
+            <?php html5wp_excerpt('html5wp_index'); ?>
+            <!-- posted by and date -->
+            <div class="author-date">
+              Door <?php the_author(); ?>
+              <span class="line"></span>
+              <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date("M, Y", strtotime(get_post()->post_date)); ?>
+            </div>
+            <!-- <a class="read-more read-more--latest" href="<?php echo get_permalink(); ?>">Lees meer <i class="fa fa-chevron-right" aria-hidden="true"></i></a> -->
+          </div>
+        </div>
 
-		<!-- post details -->
-		<span class="date">
-			<time datetime="<?php the_time('Y-m-d'); ?> <?php the_time('H:i'); ?>">
-				<?php the_date(); ?> <?php the_time(); ?>
-			</time>
-		</span>
-		<span class="author"><?php _e( 'Published by', 'html5blank' ); ?> <?php the_author_posts_link(); ?></span>
-		<span class="comments"><?php if (comments_open( get_the_ID() ) ) comments_popup_link( __( 'Leave your thoughts', 'html5blank' ), __( '1 Comment', 'html5blank' ), __( '% Comments', 'html5blank' )); ?></span>
-		<!-- /post details -->
+        </article>
 
-		<?php html5wp_excerpt('html5wp_index'); // Build your custom callback length in functions.php ?>
+     <?php }
+    } else {
+      // no posts found
+    }
+    /* Restore original Post Data */
+    wp_reset_postdata();
 
-		<?php edit_post_link(); ?>
+  ?>
+</div>
 
-	</article>
-	<!-- /article -->
+<h2>Laatste recepten</h2>
+<span class="line"></span>
+<div class="row">
+  <?php
+    // The Query
+    $the_query = new WP_Query( array( 'category_name' => 'recepten', 'posts_per_page' => 3 ) );
 
-<?php endwhile; ?>
+    // The Loop
+    if ( $the_query->have_posts() ) {
+      while ( $the_query->have_posts() ) {
+        $the_query->the_post();
+        $category = get_the_category(); ?>
 
-<?php else: ?>
+        <article class="col-sm-12">
 
-	<!-- article -->
-	<article>
-		<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
-	</article>
-	<!-- /article -->
+        <div class="panel row">
+          <div class="panel__img col-sm-6">
+            <div class="category category--blog">
+                <a href="/blog/<?php echo sanitize_title($category[0]->cat_name); ?>/">
+                  <?php echo $category[0]->cat_name; ?>
+                </a>
+            </div>
+            <a href="<?php echo get_permalink(); ?>">
+              <?php if ( has_post_thumbnail() ) {
+                 the_post_thumbnail( 'custom-size', array( 'class' => 'afbeelding img-responsive' ) );
+               } ?>
+            </a>
+          </div>
+          <div class="panel__content panel__content--no-padding col-sm-6">
+            <h2 class="subtitle ellipsis"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
+            <?php html5wp_excerpt('html5wp_index'); ?>
+            <!-- posted by and date -->
+            <div class="author-date">
+              Door <?php the_author(); ?>
+              <span class="line"></span>
+              <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date("M, Y", strtotime(get_post()->post_date)); ?>
+            </div>
+            <!-- <a class="read-more read-more--latest" href="<?php echo get_permalink(); ?>">Lees meer <i class="fa fa-chevron-right" aria-hidden="true"></i></a> -->
+          </div>
+        </div>
 
-<?php endif; ?>
+        </article>
+
+     <?php }
+    } else {
+      // no posts found
+    }
+    /* Restore original Post Data */
+    wp_reset_postdata();
+
+  ?>
+</div>

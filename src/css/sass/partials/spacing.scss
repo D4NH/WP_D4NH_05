@@ -1,0 +1,17 @@
+.padding {
+  &--left {
+    padding-left: 20px;
+  }
+  &--right {
+    padding-right: 20px;
+  }
+  &--bottom {
+    padding-bottom: 20px;
+  }
+  &--top {
+    padding-top: 20px;
+  }
+  &--all {
+    padding: 20px;
+  }
+}

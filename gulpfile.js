@@ -7,6 +7,8 @@ var gulp = require( "gulp" ),
 	$ = require( "gulp-load-plugins" )(),
 	/** @type {Array} JS source files to concatenate and uglify */
 	uglifySrc = [
+		/** Bootstrap */
+		"src/js/lib/bootstrap.min.js",
 		/** Modernizr */
 		"src/bower_components/modernizr/modernizr.js",
 		/** Conditionizr */
@@ -28,7 +30,7 @@ var gulp = require( "gulp" ),
 			/** The banner of `style.css` */
 			"src/css/banner.css",
 			/** Normalize */
-			"src/bower_components/normalize.css/normalize.css",
+			// "src/bower_components/normalize.css/normalize.css",
 			/** Theme style */
 			"src/css/style.css"
 		]
@@ -135,7 +137,7 @@ gulp.task( "envProduction", function() {
 
 /** Livereload */
 gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
-	var server = $.livereload();
+	// var server = $.livereload();
 
 	/** Watch for livereoad */
 	gulp.watch([
@@ -144,7 +146,7 @@ gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
 		"src/*.css"
 	]).on( "change", function( file ) {
 		console.log( file.path );
-		server.changed( file.path );
+		// server.changed( file.path );
 	});
 
 	/** Watch for autoprefix */

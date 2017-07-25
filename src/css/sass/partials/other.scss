@@ -1,0 +1,23 @@
+.line {
+  border-bottom: 1px solid grey;
+  width: 20px;
+  height: 1px;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ellipsis {
+  margin-top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input--primary {
+  border-color: $primary-color;
+  &:focus {
+    outline: 1px solid lighten($primary-color, 20%);
+    box-shadow: 0 0 2px 0 $primary-color;
+  }
+}
