@@ -90,11 +90,11 @@ section {
 
   &__img {
     position: relative;
-    &:hover {
-      + .panel__content a {
-        color: $primary-color;
-      }
-    }
+    // &:hover {
+    //   + .panel__content a {
+    //     color: $primary-color;
+    //   }
+    // }
   }
 }
 
@@ -153,7 +153,21 @@ section {
   }
 
   &__content {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ECECEC;
 
+    &-nav {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #ECECEC;
+    }
+  }
+
+  &__comments {
+    margin-top: -15px;
+    border-top: 1px solid #ECECEC;
   }
 }
 

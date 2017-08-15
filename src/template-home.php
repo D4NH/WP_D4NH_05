@@ -36,11 +36,11 @@
                       <article class="col-sm-3">
                         <div class="panel">
                           <div class="panel__img">
-                            <!-- <div class="category">
+                            <div class="category">
                               <a href="/blog/<?php echo sanitize_title($category[0]->cat_name); ?>/">
                                 <?php echo $category[0]->cat_name; ?>
                               </a>
-                            </div> -->
+                            </div>
                             <a href="<?php echo get_permalink(); ?>">
                               <?php if ( has_post_thumbnail() ) {
                                  the_post_thumbnail( 'custom-size', array( 'class' => 'afbeelding img-responsive' ) );

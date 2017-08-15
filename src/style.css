@@ -4384,8 +4384,6 @@ section {
           padding-top: 15px; } }
   .panel__img {
     position: relative; }
-    .panel__img:hover + .panel__content a {
-      color: #88C441; }
 
 .category {
   color: white;
@@ -4423,6 +4421,20 @@ section {
 .post__title {
   color: #88C441;
   margin-bottom: 20px; }
+
+.post__content {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #ECECEC; }
+  .post__content-nav {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ECECEC; }
+
+.post__comments {
+  margin-top: -15px;
+  border-top: 1px solid #ECECEC; }
 
 .recent-posts {
   list-style: none;
@@ -4553,6 +4565,9 @@ li#menu-item-663.current-page-ancestor > a,
 .current-page-ancestor > a,
 .current-menu-item > a {
   color: #88C441; }
+
+.navigationarrow {
+  margin-bottom: -30px; }
 
 /**
  * partials/sidebar

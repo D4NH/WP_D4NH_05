@@ -27,6 +27,16 @@
 
           <div class="post__container">
 
+            <div class="navigationarrow clearfix">
+              <?php if ( is_category('gadgets') || is_category('japan2014') ){ ?>
+              <div class="pull-left"><?php previous_post_link('&laquo; %link','%title',FALSE,'') ?></div>
+              <div class="pull-right next-post"><?php next_post_link('%link &raquo;','%title',FALSE,'') ?></div>
+              <?php } else { ?>
+              <div class="pull-left"><?php previous_post_link('&laquo; %link','%title','TRUE','') ?></div>
+              <div class="pull-right next-post"><?php next_post_link('%link &raquo;','%title','TRUE','') ?></div>
+              <?php } ?>
+            </div>
+
             <div class="post__header clearfix">
 
               <!-- post details -->
@@ -42,31 +52,31 @@
             </div>
 
             <div class="post__content">
-
               <?php the_content(); // Dynamic Content ?>
-
               <?php // the_tags( __( 'Tags: ', 'html5blank' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
-
               <!-- <p><?php // _e( 'Categorised in: ', 'html5blank' ); the_category(', '); // Separated by commas ?></p> -->
-
-              <p>Categorised in: <a href="/blog/<?php echo sanitize_title(get_the_category( $id )[0]->name); ?>"><?php echo get_the_category( $id )[0]->name; ?></a></p>
-
-              <p><?php // _e( 'Geschreven door ', 'html5blank' ); the_author(); ?></p>
-
               <?php edit_post_link(); // Always handy to have Edit Post Links available ?>
 
+              <div class="post__content-nav">
+                <p>
+                  Gecategoriseerd in: <a href="/blog/<?php echo sanitize_title(get_the_category( $id )[0]->name); ?>"><?php echo get_the_category( $id )[0]->name; ?></a>
+                </p>
+                <!-- <p>
+                  <?php // _e( 'Geschreven door ', 'html5blank' ); the_author(); ?>
+                </p> -->
+              </div>
             </div>
 
-          </div>
+            <div class="navigationarrow clearfix">
+              <?php if ( is_category('gadgets') || is_category('japan2014') ){ ?>
+              <div class="pull-left"><?php previous_post_link('&laquo; %link','%title',FALSE,'') ?></div>
+              <div class="pull-right next-post"><?php next_post_link('%link &raquo;','%title',FALSE,'') ?></div>
+              <?php } else { ?>
+              <div class="pull-left"><?php previous_post_link('&laquo; %link','%title','TRUE','') ?></div>
+              <div class="pull-right next-post"><?php next_post_link('%link &raquo;','%title','TRUE','') ?></div>
+              <?php } ?>
+            </div>
 
-          <div class="navigationarrow">
-            <?php if ( is_category('gadgets') || is_category('japan2014') ){ ?>
-            <div class="pull-left"><?php previous_post_link('&laquo; %link','%title',FALSE,'') ?></div>
-            <div class="pull-right next-post"><?php next_post_link('%link &raquo;','%title',FALSE,'') ?></div>
-            <?php } else { ?>
-            <div class="pull-left"><?php previous_post_link('&laquo; %link','%title','TRUE','') ?></div>
-            <div class="pull-right next-post"><?php next_post_link('%link &raquo;','%title','TRUE','') ?></div>
-            <?php } ?>
           </div>
 
           <br/><br/><br/>
