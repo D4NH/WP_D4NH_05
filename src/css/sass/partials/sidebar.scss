@@ -6,4 +6,9 @@
 
 .sidebar {
   font-size: 12px;
+
+  ul, ol {
+    padding-left: 0;
+    margin-left: 15px;
+  }
 }

@@ -49,6 +49,11 @@
     wp_reset_postdata();
 
   ?>
+  <div class="col-sm-12">
+    <p>
+      <a href="/blog/travel/">Toon alle trips</a>
+    </p>
+  </div>
 </div>
 
 <h2>Laatste recepten</h2>
@@ -102,4 +107,9 @@
     wp_reset_postdata();
 
   ?>
+  <div class="col-sm-12">
+    <p>
+      <a href="/blog/recepten/">Toon alle gerechten</a>
+    </p>
+  </div>
 </div>

@@ -21,6 +21,12 @@
   }
 }
 
+.category-recepten {
+  .post__content {
+    text-align: left;
+  }
+}
+
 .wrapper {
   max-width: $wrapper-width;
   padding: 0 $margin-horizontal-large;
@@ -157,6 +163,13 @@ section {
     margin-bottom: 15px;
     padding-top: 15px;
     border-top: 1px solid #ECECEC;
+    text-align: center;
+
+    img {
+      @media only screen and (min-width : 768px) {
+        width: 90%;
+      }
+    }
 
     &-nav {
       margin-top: 20px;

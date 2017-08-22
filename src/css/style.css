@@ -4263,10 +4263,6 @@ input[type="search"] {
   color: #FAFAFA;
   text-shadow: none; }
 
-ul {
-  margin-left: 0;
-  padding-left: 15px; }
-
 input, select, textarea {
   width: 100%;
   border-radius: 4px;
@@ -4324,6 +4320,9 @@ input, select, textarea {
   font-size: 140%;
   line-height: 1.5; }
 
+.wp-video {
+  margin: 0 auto; }
+
 /**
  * partials/utils
  * ---
@@ -4359,6 +4358,9 @@ input, select, textarea {
 @media only screen and (min-width: 1200px) {
   .page-template-default article.col-sm-4 {
     min-height: 430px; } }
+
+.category-recepten .post__content {
+  text-align: left; }
 
 .wrapper {
   max-width: 1280px;
@@ -4456,7 +4458,11 @@ section {
   margin-top: 15px;
   margin-bottom: 15px;
   padding-top: 15px;
-  border-top: 1px solid #ECECEC; }
+  border-top: 1px solid #ECECEC;
+  text-align: center; }
+  @media only screen and (min-width: 768px) {
+    .post__content img {
+      width: 90%; } }
   .post__content-nav {
     margin-top: 20px;
     padding-top: 15px;
@@ -4605,6 +4611,9 @@ li#menu-item-663.current-page-ancestor > a,
  */
 .sidebar {
   font-size: 12px; }
+  .sidebar ul, .sidebar ol {
+    padding-left: 0;
+    margin-left: 15px; }
 
 .padding--left {
   padding-left: 20px; }
